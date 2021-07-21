@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="author" content="Andy Yang">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Leaflet 測試</title>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+ <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+<style>
+html, body{
+  height: 97.5%;
+}
+#mymap{
+  height: 100%;
+}
+</style>
+</head>
+<body>
+ <div id="mymap"></div>
+ <script>
+   var mymap = L.map('mymap').setView([22.78, 120.35], 10);
+   L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP/default/EPSG:3857/{z}/{y}/{x}', {
+    attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a> 網頁開發：<a href="https://github.com/a962702/" target="_blank">Andy Yang',
+	maxZoom: 19
+   }).addTo(mymap);
+   L.tileLayer('https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{z}/{y}/{x}', {
+    attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a> 網頁開發：<a href="https://github.com/a962702/" target="_blank">Andy Yang',
+	maxZoom: 19,
+	zIndex: 2,
+	opacity: 0.5
+   }).addTo(mymap);
+ </script>
+</body>
+</html>
