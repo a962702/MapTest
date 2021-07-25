@@ -24,17 +24,68 @@ html, body{
 <body>
  <div id="mymap"></div>
  <script>
-   var mymap = L.map('mymap').setView([22.78, 120.35], 10);
-   L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP/default/EPSG:3857/{z}/{y}/{x}', {
-    attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a> 網頁開發：<a href="https://github.com/a962702/" target="_blank">Andy Yang',
-	maxZoom: 19
-   }).addTo(mymap);
-   L.tileLayer('https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{z}/{y}/{x}', {
-    attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a> 網頁開發：<a href="https://github.com/a962702/" target="_blank">Andy Yang',
-	maxZoom: 19,
-	zIndex: 2,
-	opacity: 0.5
-   }).addTo(mymap);
+   var nlsc_AED = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/AED/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+       nlsc_B100000 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/B100000/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_B25000 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/B25000/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_B50000 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/B50000/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_B5000 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/B5000/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_CITY = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/CITY/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_ConvenienceStore = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/ConvenienceStore/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP01 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP01/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP12 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP12/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP15 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP15/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP16 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP16/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP2 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP2/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP5_OPENDATA = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP5_OPENDATA/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP5 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP5/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP6_OPENDATA = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP6_OPENDATA/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP6 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP6/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP7 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP7/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP8 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP8/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP96 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP96/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP97 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP97/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP98 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP98/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP9 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP9/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAPX99 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAPX99/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_EMAP = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   nlsc_PHOTO2 = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{z}/{y}/{x}', {attribution: '圖資來源：<a href="https://maps.nlsc.gov.tw/" target="_blank">國土測繪圖資服務雲</a>'}),
+	   csrsr_SP2020NC_3857 = L.tileLayer('https://data.csrsr.ncu.edu.tw/SP/SP2020NC_3857/{z}/{x}/{y}.png', {attribution: '圖資來源：<a href="https://data.csrsr.ncu.edu.tw/" target="_blank">國立中央大學太空及遙測研究中心資源衛星接收站</a>'});
+   var mymap = L.map('mymap', {
+       center: [22.78, 120.35],
+       zoom: 10,
+	   layers: nlsc_EMAP
+   });
+   var baseMaps = {
+   	"1/100000 地形圖": nlsc_B100000,
+	"1/25000 地形圖": nlsc_B25000,
+	"1/50000 地形圖": nlsc_B50000,
+	"1/5000基本地形圖": nlsc_B5000,
+	"臺灣通用電子地圖(灰階)": nlsc_EMAP01,
+	"臺灣通用電子地圖透明(無門牌)": nlsc_EMAP12,
+	"臺灣通用電子地圖(等高線無門牌)": nlsc_EMAP15,
+	"臺灣通用電子地圖(無等高線及門牌)": nlsc_EMAP16,
+	"臺灣通用電子地圖(套疊等高線)OpenData, 最大比例尺一萬八千分之一": nlsc_EMAP5_OPENDATA,
+	"臺灣通用電子地圖(等高線+門牌)": nlsc_EMAP5,
+	"臺灣通用電子地圖(不含等高線)OpenData, 最大比例尺一萬八千分之一": nlsc_EMAP6_OPENDATA,
+	"臺灣通用電子地圖(無等高線)": nlsc_EMAP6,
+	"TaiwanE-Map(EN)": nlsc_EMAP8,
+	"臺灣通用電子地圖(高DPI字)": nlsc_EMAP96,
+	"Taiwan e-Map(new)": nlsc_EMAP97,
+	"臺灣通用電子地圖(新)": nlsc_EMAP98,
+	"臺灣通用電子地圖(無鐵公路)": nlsc_EMAP9,
+	"臺灣通用電子地圖(無文字)": nlsc_EMAPX99,
+	"臺灣通用電子地圖": nlsc_EMAP,
+	"正射影像圖(通用)": nlsc_PHOTO2,
+	"SP2020NC_3857": csrsr_SP2020NC_3857
+   };
+   var overlayMaps = {
+    "AED位置": nlsc_AED,
+	"縣市界": nlsc_CITY,
+	"便利商店(超商)": nlsc_ConvenienceStore,
+	"臺灣通用電子地圖透明": nlsc_EMAP2,
+	"TaiwanE-Map(Transparent)": nlsc_EMAP7
+   };
+   L.control.layers(baseMaps, overlayMaps).addTo(mymap);
  </script>
 </body>
 </html>
